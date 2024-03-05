@@ -1,0 +1,20 @@
+{
+  "version": "5",
+  "dialect": "pg",
+  "entries": [
+    {
+      "idx": 0,
+      "version": "5",
+      "when": 1709661047272,
+      "tag": "0000_marvelous_wallow",
+      "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "5",
+      "when": 1709662028736,
+      "tag": "0001_cheerful_harrier",
+      "breakpoints": true
+    }
+  ]
+}

@@ -1,0 +1,49 @@
+{
+  "id": "82edaf5e-ee02-4bab-8860-7f9ec79828cf",
+  "prevId": "0fea7bee-cd3a-4708-a514-14ad080b2384",
+  "version": "5",
+  "dialect": "pg",
+  "tables": {
+    "order": {
+      "name": "order",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "text",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "game_id": {
+          "name": "game_id",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "killer": {
+          "name": "killer",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "victim": {
+          "name": "victim",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {}
+    }
+  },
+  "enums": {},
+  "schemas": {},
+  "_meta": {
+    "schemas": {},
+    "tables": {},
+    "columns": {}
+  }
+}
