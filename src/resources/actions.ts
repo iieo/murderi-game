@@ -6,7 +6,7 @@ import { and, eq, inArray } from "drizzle-orm";
 export async function dbInsertOrder(
   gameId: string,
   killer: string,
-  victim: string
+  victim: string,
 ) {
   await db
     .insert(orderSchema)
@@ -21,7 +21,7 @@ export async function dbGetVictim(gameId: string, killer: string) {
 export async function dbUpdateVictim(
   gameId: string,
   killer: string,
-  killed: string
+  killed: string,
 ) {
   const killedPeople = await dbGetVictim(gameId, killed);
   if (killedPeople.length == 1) {
@@ -30,13 +30,13 @@ export async function dbUpdateVictim(
       .update(orderSchema)
       .set({ victim: null })
       .where(
-        and(eq(orderSchema.gameId, gameId), eq(orderSchema.killer, killed))
+        and(eq(orderSchema.gameId, gameId), eq(orderSchema.killer, killed)),
       );
     await db
       .update(orderSchema)
       .set({ victim: newVictim })
       .where(
-        and(eq(orderSchema.gameId, gameId), eq(orderSchema.killer, killer))
+        and(eq(orderSchema.gameId, gameId), eq(orderSchema.killer, killer)),
       );
   } else {
     throw new Error("Invalid amount returned: " + killedPeople);
