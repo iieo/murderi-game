@@ -13,7 +13,7 @@ export default async function GamePlayers({
 
       <h2>Select your player</h2>
       {players.map((player) => (
-        <div className="border-2 my-4 flex">
+        <div key={player} className="border-2 my-4 flex">
           <p className="p-4">{player}</p>
           <Link
             href={`/${params.gameId}/${player}`}

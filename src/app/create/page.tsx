@@ -59,7 +59,7 @@ export default function CreateGame() {
 
       <p>Players:</p>
       {players.map((p) => (
-        <p>{p}</p>
+        <p key={p}>{p}</p>
       ))}
     </div>
   );
