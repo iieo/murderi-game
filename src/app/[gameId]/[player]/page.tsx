@@ -13,12 +13,15 @@ export default async function SharePage({
   }
   const order = orders[0];
   if (order.killer == order.victim) {
-    return <h1>You have won the game!</h1>;
+    return <h1 className="text-2xl">You have won the game!</h1>;
+  }
+  if (order.victim == null) {
+    return <h1 className="text-2xl">You have been killed</h1>;
   }
   return (
     <div>
-      <h1>Player: {order.killer}</h1>
-      <h1>You have to kill: {order.victim}</h1>
+      <h1 className="text-2xl">Player: {order.killer}</h1>
+      <h1 className="text-xl my-4">You have to kill: {order.victim}</h1>
       <KillButton order={order} />
     </div>
   );

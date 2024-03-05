@@ -28,6 +28,12 @@ export async function dbUpdateVictim(
     const newVictim = killedPeople[0].victim;
     await db
       .update(orderSchema)
+      .set({ victim: null })
+      .where(
+        and(eq(orderSchema.gameId, gameId), eq(orderSchema.killer, killed))
+      );
+    await db
+      .update(orderSchema)
       .set({ victim: newVictim })
       .where(
         and(eq(orderSchema.gameId, gameId), eq(orderSchema.killer, killer))

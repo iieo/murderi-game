@@ -15,6 +15,13 @@
       "when": 1709662028736,
       "tag": "0001_cheerful_harrier",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "5",
+      "when": 1709666650070,
+      "tag": "0002_vengeful_boomerang",
+      "breakpoints": true
     }
   ]
 }
