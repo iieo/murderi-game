@@ -8,9 +8,7 @@ export async function dbInsertOrder(
   killer: string,
   victim: string
 ) {
-  await db
-    .insert(orderSchema)
-    .values({ id: `${gameId}${killer}`, gameId, killer, victim });
+  await db.insert(orderSchema).values({ gameId, killer, victim });
 }
 export async function dbGetVictim(gameId: string, killer: string) {
   return await db

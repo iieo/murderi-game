@@ -55,6 +55,29 @@ export default function CreateGame() {
         >
           Create game
         </button>
+        <button
+          className="bg-blue-600 p-4 my-4 hover:bg-blue-700"
+          type="button"
+          onClick={() =>
+            setPlayers([
+              "Leo",
+              "Andi",
+              "Cici",
+              "Frudl",
+              "Jakob",
+              "Joni",
+              "Lars",
+              "Loui",
+              "Riedl",
+              "Sammer",
+              "Steff",
+              "Tania",
+              "Tom",
+            ])
+          }
+        >
+          Load default
+        </button>
       </form>
 
       <p>Players:</p>

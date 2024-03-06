@@ -1,5 +1,5 @@
 {
-  "id": "0fea7bee-cd3a-4708-a514-14ad080b2384",
+  "id": "6b70316c-fca8-4e3e-a168-752ab5bf5d95",
   "prevId": "00000000-0000-0000-0000-000000000000",
   "version": "5",
   "dialect": "pg",
@@ -31,7 +31,7 @@
           "name": "victim",
           "type": "text",
           "primaryKey": false,
-          "notNull": true
+          "notNull": false
         }
       },
       "indexes": {},

@@ -32,6 +32,13 @@ export default function JoinGame() {
         >
           Join
         </button>
+        <button
+          className="bg-blue-600 p-4 my-4 hover:bg-blue-700"
+          type="button"
+          onClick={() => router.push("/create")}
+        >
+          Create
+        </button>
       </form>
     </div>
   );
