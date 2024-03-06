@@ -1,12 +1,12 @@
 "use server";
 import db from "@/database";
 import { orderSchema } from "@/database/schema";
-import { and, eq, inArray } from "drizzle-orm";
+import { and, eq } from "drizzle-orm";
 
 export async function dbInsertOrder(
   gameId: string,
   killer: string,
-  victim: string,
+  victim: string
 ) {
   await db
     .insert(orderSchema)
@@ -21,22 +21,22 @@ export async function dbGetVictim(gameId: string, killer: string) {
 export async function dbUpdateVictim(
   gameId: string,
   killer: string,
-  killed: string,
+  victim: string
 ) {
-  const killedPeople = await dbGetVictim(gameId, killed);
+  const killedPeople = await dbGetVictim(gameId, victim);
   if (killedPeople.length == 1) {
     const newVictim = killedPeople[0].victim;
     await db
       .update(orderSchema)
-      .set({ victim: null })
+      .set({ victim: newVictim })
       .where(
-        and(eq(orderSchema.gameId, gameId), eq(orderSchema.killer, killed)),
+        and(eq(orderSchema.gameId, gameId), eq(orderSchema.killer, killer))
       );
     await db
       .update(orderSchema)
-      .set({ victim: newVictim })
+      .set({ victim: null })
       .where(
-        and(eq(orderSchema.gameId, gameId), eq(orderSchema.killer, killer)),
+        and(eq(orderSchema.gameId, gameId), eq(orderSchema.killer, victim))
       );
   } else {
     throw new Error("Invalid amount returned: " + killedPeople);

@@ -1,5 +1,6 @@
 import { dbGetVictim, dbUpdateVictim } from "@/resources/actions";
 import KillButton from "./killbutton";
+import KillInfo from "./kill-info";
 
 export default async function SharePage({
   params,
@@ -20,8 +21,7 @@ export default async function SharePage({
   }
   return (
     <div>
-      <h1 className="text-2xl">Player: {order.killer}</h1>
-      <h1 className="text-xl my-4">You have to kill: {order.victim}</h1>
+      <KillInfo order={order} />
       <KillButton order={order} />
     </div>
   );

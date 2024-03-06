@@ -1,13 +1,13 @@
 "use client";
 
+import { Order } from "@/database/schema";
 import { dbUpdateVictim } from "@/resources/actions";
 import { useRouter } from "next/navigation";
 
-export default function KillButton(props: {
-  order: { gameId: string; killer: string; victim: string | null };
-}) {
+export default function KillButton(props: { order: Order }) {
   const router = useRouter();
   const victim = props.order.victim;
+  
   if (victim == null) {
     return null;
   }
