@@ -33,7 +33,7 @@ export default function JoinGame() {
     <div className="flex flex-col">
       <Card>
         <CardHeader>
-          <CardTitle>Murderi Game</CardTitle>
+          <CardTitle>Murdery Game</CardTitle>
           <CardDescription>
             Enter your game id or create a new game
           </CardDescription>

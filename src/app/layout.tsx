@@ -6,7 +6,7 @@ import { Toaster } from "sonner";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Murderi game",
+  title: "Murdery game",
   description: "Give everyone an item to win",
 };
 
