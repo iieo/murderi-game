@@ -11,6 +11,7 @@ import {
 } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { redirect } from "next/navigation";
+import Link from "next/link";
 
 export default async function PlayerPage({
   params,
@@ -25,7 +26,17 @@ export default async function PlayerPage({
   }
   const order = orders[0];
   if (order.killer == order.victim) {
-    return <h1 className="text-2xl">You have won the game!</h1>;
+    return (
+      <Card>
+        <CardHeader>
+          <CardTitle>You have won the game!</CardTitle>
+          <CardDescription>Congratulations!</CardDescription>
+        </CardHeader>
+        <CardFooter className="flex flex-col">
+          <Link href={"/"}>Back home</Link>
+        </CardFooter>
+      </Card>
+    );
   }
   if (order.victim == null) {
     redirect("/game/killed");

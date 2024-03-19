@@ -50,8 +50,14 @@ export default function CreateGame() {
         description: "Please type in a longer player name",
       });
     } else {
-      setPlayers([...players, playerName]);
-      form.setValue("playerName", "");
+      if (!players.includes(playerName)) {
+        setPlayers([...players, playerName]);
+        form.setValue("playerName", "");
+      } else {
+        toast.error("Invalid player name", {
+          description: "This player is already in the list",
+        });
+      }
     }
   };
 
@@ -61,6 +67,7 @@ export default function CreateGame() {
         description: "Please add more players to start the game",
       });
     } else {
+      setLoading(true);
       const orders = createOrders(players);
       for (const order of orders) {
         await dbInsertOrder(gameId, order.killer, order.victim);
@@ -68,6 +75,19 @@ export default function CreateGame() {
       router.push(`/game/${gameId}/share`);
     }
   };
+
+  if (isLoading) {
+    return (
+      <Card>
+        <CardHeader>
+          <CardTitle>Loading...</CardTitle>
+          <CardDescription>
+            Please wait. The game is being created.
+          </CardDescription>
+        </CardHeader>
+      </Card>
+    );
+  }
 
   return (
     <div>
@@ -128,7 +148,9 @@ export default function CreateGame() {
       <Card className="mt-4">
         <CardHeader>
           <CardTitle>Current players</CardTitle>
-          <CardDescription>This is a list of all players. Current amount: {players.length}</CardDescription>
+          <CardDescription>
+            This is a list of all players. Current amount: {players.length}
+          </CardDescription>
         </CardHeader>
         <CardContent>
           {players.map((p) => (

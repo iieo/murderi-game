@@ -17,24 +17,25 @@ export async function dbGetVictim(gameId: string, killer: string) {
     .where(and(eq(orderSchema.gameId, gameId), eq(orderSchema.killer, killer)));
 }
 export async function dbUpdateVictim(gameId: string, player: string) {
-  // const killedPeople = await dbGetVictim(gameId, victim);
-  // if (killedPeople.length == 1) {
-  //   const newVictim = killedPeople[0].victim;
-  //   await db
-  //     .update(orderSchema)
-  //     .set({ victim: newVictim })
-  //     .where(
-  //       and(eq(orderSchema.gameId, gameId), eq(orderSchema.killer, killer))
-  //     );
-  //   await db
-  //     .update(orderSchema)
-  //     .set({ victim: null })
-  //     .where(
-  //       and(eq(orderSchema.gameId, gameId), eq(orderSchema.killer, victim))
-  //     );
-  // } else {
-  //   throw new Error("Invalid amount returned: " + killedPeople);
-  // }
+  //the player2 which had player as victim will now have the victim of player
+
+  const orders = await dbGetVictim(gameId, player);
+  if (orders.length != 1) {
+    throw new Error("Invalid amount returned: " + orders);
+  }
+  const order = orders[0];
+  const victim = order.victim;
+  if (victim == null) {
+    throw new Error("Victim is null");
+  }
+  await db
+    .update(orderSchema)
+    .set({ victim })
+    .where(and(eq(orderSchema.gameId, gameId), eq(orderSchema.victim, player)));
+  await db
+    .update(orderSchema)
+    .set({ victim: null })
+    .where(and(eq(orderSchema.gameId, gameId), eq(orderSchema.killer, player)));
 }
 
 export async function dbGetPlayers(gameId: string) {

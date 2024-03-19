@@ -17,7 +17,7 @@ export default async function GamePlayers({
 }) {
   const getListItem = (player:string)=>{
     return (
-      <Link href={`/game/${params.gameId}/${player}`} className="w-full mb-4">
+      <Link href={`/game/${params.gameId}/${player}`} className="w-full mb-4" key={player}>
         <Card>
           <CardHeader>
             <div className="flex justify-between">
