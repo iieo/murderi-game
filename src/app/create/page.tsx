@@ -65,7 +65,7 @@ export default function CreateGame() {
       for (const order of orders) {
         await dbInsertOrder(gameId, order.killer, order.victim);
       }
-      router.push(`/share/${gameId}`);
+      router.push(`/game/${gameId}/share`);
     }
   };
 
