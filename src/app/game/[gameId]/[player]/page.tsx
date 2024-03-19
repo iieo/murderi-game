@@ -1,14 +1,25 @@
 import { dbGetVictim, dbUpdateVictim } from "@/resources/actions";
-import KillButton from "./killbutton";
-import KillInfo from "./kill-info";
+import KillButton from "./kill-button";
 
-export default async function SharePage({
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { redirect } from "next/navigation";
+
+export default async function PlayerPage({
   params,
 }: {
   params: { gameId: string; player: string };
 }) {
-  const orders = await dbGetVictim(params.gameId, params.player);
-
+  const gameId = params.gameId;
+  const player = params.player;
+  const orders = await dbGetVictim(gameId, player);
   if (orders.length != 1) {
     return <h1>Player not found</h1>;
   }
@@ -17,12 +28,22 @@ export default async function SharePage({
     return <h1 className="text-2xl">You have won the game!</h1>;
   }
   if (order.victim == null) {
-    return <h1 className="text-2xl">You have been killed</h1>;
+    redirect("/game/killed");
   }
   return (
-    <div>
-      <KillInfo order={order} />
-      <KillButton order={order} />
-    </div>
+    <Card>
+      <CardHeader>
+        <CardTitle>Kill order</CardTitle>
+        <CardDescription>
+          Kill the person by giving them anything
+        </CardDescription>
+      </CardHeader>
+      <CardContent>
+        <p>Your target: {order.victim}</p>
+      </CardContent>
+      <CardFooter className="flex flex-col">
+        <KillButton gameId={gameId} player={player} />
+      </CardFooter>
+    </Card>
   );
 }

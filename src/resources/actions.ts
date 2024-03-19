@@ -16,29 +16,25 @@ export async function dbGetVictim(gameId: string, killer: string) {
     .from(orderSchema)
     .where(and(eq(orderSchema.gameId, gameId), eq(orderSchema.killer, killer)));
 }
-export async function dbUpdateVictim(
-  gameId: string,
-  killer: string,
-  victim: string
-) {
-  const killedPeople = await dbGetVictim(gameId, victim);
-  if (killedPeople.length == 1) {
-    const newVictim = killedPeople[0].victim;
-    await db
-      .update(orderSchema)
-      .set({ victim: newVictim })
-      .where(
-        and(eq(orderSchema.gameId, gameId), eq(orderSchema.killer, killer))
-      );
-    await db
-      .update(orderSchema)
-      .set({ victim: null })
-      .where(
-        and(eq(orderSchema.gameId, gameId), eq(orderSchema.killer, victim))
-      );
-  } else {
-    throw new Error("Invalid amount returned: " + killedPeople);
-  }
+export async function dbUpdateVictim(gameId: string, player: string) {
+  // const killedPeople = await dbGetVictim(gameId, victim);
+  // if (killedPeople.length == 1) {
+  //   const newVictim = killedPeople[0].victim;
+  //   await db
+  //     .update(orderSchema)
+  //     .set({ victim: newVictim })
+  //     .where(
+  //       and(eq(orderSchema.gameId, gameId), eq(orderSchema.killer, killer))
+  //     );
+  //   await db
+  //     .update(orderSchema)
+  //     .set({ victim: null })
+  //     .where(
+  //       and(eq(orderSchema.gameId, gameId), eq(orderSchema.killer, victim))
+  //     );
+  // } else {
+  //   throw new Error("Invalid amount returned: " + killedPeople);
+  // }
 }
 
 export async function dbGetPlayers(gameId: string) {
