@@ -2,9 +2,10 @@
 
 A Next.js Murder-Mystery Party Game
 
-**Live demo**
-Directly play the game: murdery.de
+## Live demo
+Directly play the game: [murdery.de](https://murdery.de)
 
+## How to play
 **Goal:**
 
 The objective of the game is to discreetly "kill" other players by secretly giving them a designated item. Once a player has been "killed," they click the "I was killed" button, and the killer is assigned a new target.
@@ -18,7 +19,7 @@ The objective of the game is to discreetly "kill" other players by secretly givi
 5.  The killer is then assigned a new target.
 6.  The game continues until only one player remains.
 
-**How to Run the Next.js Project**
+## How to Run the Next.js Project
 
 1. **Prerequisites:**
    - Node.js ([https://nodejs.org/](https://nodejs.org/))
