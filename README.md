@@ -1,36 +1,38 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Murdery Game
 
-## Getting Started
+A Next.js Murder-Mystery Party Game
 
-First, run the development server:
+**Live demo**
+Directly play the game: murdery.de
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+**Goal:**
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+The objective of the game is to discreetly "kill" other players by secretly giving them a designated item. Once a player has been "killed," they click the "I was killed" button, and the killer is assigned a new target.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+**Gameplay**
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+1.  Players are randomly assigned a target player to eliminate.
+2.  Players must subtly pass a everyday object to their target without being noticed.
+3.  Once a player receives their assigned item, they are considered "killed."
+4.  "Killed" players click the "I was killed" button.
+5.  The killer is then assigned a new target.
+6.  The game continues until only one player remains.
 
-## Learn More
+**How to Run the Next.js Project**
 
-To learn more about Next.js, take a look at the following resources:
+1. **Prerequisites:**
+   - Node.js ([https://nodejs.org/](https://nodejs.org/))
+   - npm or pnpm package manager
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+2. **Installation:**
+   - Clone or download the project repository.
+   - Navigate to the project directory in your terminal.
+   - Run `npm install` or `pnpm install` to install dependencies.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+3. **Development Mode:**
+   - Run `npm run dev` or `pnpm dev` to start the development server (usually at http://localhost:3000).
 
-## Deploy on Vercel
+4. **Production Build:**
+   - Run `npm run build` or `pnpm build` to create an optimized production build.
+   - Start a production server (instructions will vary depending on your hosting environment).
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
